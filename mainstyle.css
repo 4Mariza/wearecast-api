@@ -69,7 +69,6 @@ header{
     transition: width 0.4s ease-in-out;
     border-color: whitesmoke;
     border-style: solid;
-    cursor: pointer;
 }
 #search-bar:focus{
     width: 100%;

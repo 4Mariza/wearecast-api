@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #271D60;
+    width: 100vw;
+    height: 100vh;
+}
+
+header{
+    display: flex;
+    width: 100%;
+    height: 15%;
+    padding-left: 1%;
+    padding-right: 1%;
+    place-items: center;
+    justify-content: space-between;
+}
+
+.logo{
+    display: flex;
+    flex-direction:row ;
+    width: 19%;
+    height: 100%;
+    justify-content: center;
+    place-items: center;
+    gap: 18px;
+    padding-top: 1%;
+}
+
+.circulo{
+    display: flex;
+    width: 85%;
+    height: 100%;
+    background-color:#4477C2;
+    border-radius: 100%;
+    justify-content:center ;
+}
+
+#logo_clouds{
+    width: 95px;
+}
+
+#nome{
+    font-family: 'Kameron', serif;
+    color: whitesmoke;
+}
+
+.pesquisar{
+    display: flex;
+    flex-direction: row;
+    width: 25%;
+    height: 30%;
+    place-content: end;
+}
+
+#search-bar{
+    width: 45%;
+    height: 100%;
+    border-radius: 25px;
+    background-image: url(./img/searchicon.png);
+    background-position: 95% ;
+    background-size: contain;
+    background-repeat: no-repeat;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    border-color: whitesmoke;
+    border-style: solid;
+    cursor: pointer;
+}
+#search-bar:focus{
+    width: 100%;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    height: 85%;
+    width: 100%;
+    background-color: antiquewhite;
+    align-items: center;
+}
+
+.clima_atual{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 37%;
+    background: linear-gradient(to right, #54416D, #4477C2);
+    border-radius: 80px;
+    justify-items: center;
+    padding-left: 3%;
+    padding-top: .6%;
+}
+#clima-semanal{
+    opacity: 70%;
+}
+#clima-hora{
+    color: #271D60;
+}
+
+.tipo-previsoes{
+    display:flex ;
+    flex-direction: row;
+    gap: 8px;
+    width: 10%;
+    height: 8%;
+    font-family: 'Kameron', serif;
+    color: whitesmoke;
+}

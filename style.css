@@ -1,0 +1,42 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #271D60;
+    width: 100vw;
+    height: 100vh;
+}
+
+.logo{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.circulo{
+    display: flex;
+    background-color: #4477C2;
+    width: 25%;
+    height: 50%;
+    border-radius: 100%;
+    place-self: center;
+    justify-content: center;
+}
+
+#logo-clouds{
+    width: 330px;
+}
+
+#nome{
+    place-self: center;
+    color: whitesmoke;
+    font-family: 'Kameron', serif;
+    font-size: 40px;
+    letter-spacing: 5px;
+}

@@ -2,7 +2,7 @@
 
 const body = document.getElementById('body')
 function redirecionar () {
-    window.location.assign("./main.html")
+    window.location.assign("../main.html")
 }
 
 

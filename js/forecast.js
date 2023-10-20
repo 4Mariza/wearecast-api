@@ -1,6 +1,6 @@
 'use strict'
 
-import { getForecastToday } from "./api.js"
+import { getForecastToday, getForecastWeekly } from "./api.js"
 
 const localidade = document.getElementById('local')
 const chuva = document.getElementById('chuva')
@@ -15,6 +15,7 @@ const input = document.getElementById('search-bar')
 const alerta = document.getElementById('alerta')
 const btnAlert = document.getElementById('alert-button')
 const favoriteStar = document.getElementById('favorite_star')
+const semanal = document.getElementById('clima-semanal')
 
 let lng = 0
 let lat = 0
@@ -35,7 +36,39 @@ const createHora = async (item) => {
     }
 }
 
+let semana = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"]
+const createDiaSemana = async (item) => {
+    let dayNumber = Number(item.date.split("-")[1])
+    if(date.getDate() <= dayNumber && dayNumber < date.getDate() + 6){
+        const div = document.createElement('div')
+        div.classList.add('dias')
+        div.innerHTML = `
+            <span>${semana[date.getDay()]}</span>
+            <img src=${item.condition.icon} alt="" width="95px">
+            <span> ${item.maxtemp_c}° / ${item.mintemp_c}°</span>
+        `
+        hora.appendChild(div)
+    }
+}
+
+const getDataWeek = async () =>{
+    hora.replaceChildren("")
+
+    let data
+    if (input.value !== "")
+        data = await getForecastWeekly(input.value)
+    else 
+        data = await getForecastWeekly(lat + "," + lng)
+    
+    for(let indice = 0; indice < 7; indice++){
+        data.forecast.forecastday[indice].date.map(createDiaSemana)
+    }
+}
+
+
 const getData = async () => {
+    hora.replaceChildren("")
+
     let data
     if (input.value !== "")
         data = await getForecastToday(input.value)
@@ -45,19 +78,21 @@ const getData = async () => {
     localidade.textContent = data.location.name
     chuva.textContent = `chance de chuva: ${data.forecast.forecastday[0].day.daily_chance_of_rain}%`
     temperatura.textContent = data.current.temp_c + "°"
+    icon.src = data.current.condition.icon
     sensacao.textContent = data.current.feelslike_c + "°"
     uv.textContent = data.current.uv
     vento.textContent =`${data.current.wind_kph} km/h`
     umidade.textContent = `${data.current.humidity}%`
     
-    if (data.alerts.alert[0] == "")
+    if (data.alerts.alert == "")
         alerta.textContent = "Não há alertas."
     else
         alerta.textContent = data.alerts.alert[0]
 
-    data.forecast.forecastday[0].hour.map(createHora)
-       
+    data.forecast.forecastday[0].hour.map(createHora)   
 }    
+
+
 
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -84,3 +119,4 @@ const favoritar = () => {
 input.addEventListener('focusout', getData)
 btnAlert.addEventListener('click', showAlerts)
 favoriteStar.addEventListener('click', favoritar)
+semanal.addEventListener('click', getDataWeek)

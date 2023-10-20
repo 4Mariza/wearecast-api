@@ -128,6 +128,7 @@ main{
 #clima-semanal:hover{
     opacity: 100%;
 }
+
 #clima-hora{
     color: #271D60;
     cursor:pointer ;
@@ -212,7 +213,7 @@ main{
 }
 .aspectos h1{
     color: whitesmoke;
-    padding-left: 24px;
+    padding-left: 40px;
 }
 
 .previsao{

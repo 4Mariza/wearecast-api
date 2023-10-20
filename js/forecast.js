@@ -11,9 +11,11 @@ const uv = document.getElementById('uv')
 const vento = document.getElementById('vento')
 const umidade = document.getElementById('umidade')
 const hora = document.getElementById('previsoes_hora')
+const input = document.getElementById('search-bar')
+const alerta = document.getElementById('alerta')
 
-let lat = 0
 let lng = 0
+let lat = 0
 
 let local = ""
 const date = new Date()
@@ -49,11 +51,11 @@ const getData = async () => {
     localidade.textContent = data.location.name
     chuva.textContent = `chance de chuva: ${data.forecast.forecastday[0].day.daily_chance_of_rain}%`
     temperatura.textContent = data.current.temp_c + "°"
-    icon = data.current.condition.icon
     sensacao.textContent = data.current.feelslike_c + "°"
     uv.textContent = data.current.uv
-    vento.textContent = data.current.wind_kph
-    
+    vento.textContent =`${data.current.wind_kph} km/h`
+    umidade.textContent = `${data.current.humidity}%`
+    alerta.textContent = data.alerts.alert[0]
 }
     
 

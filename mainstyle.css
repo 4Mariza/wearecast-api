@@ -120,10 +120,18 @@ main{
 #clima-semanal{
     opacity: 70%;
     cursor: pointer;
+    transition: .3s;
+}
+#clima-semanal:hover{
+    opacity: 100%;
 }
 #clima-hora{
     color: #271D60;
     cursor:pointer ;
+    transition: .5s;
+}
+#clima-hora:hover{
+    color: whitesmoke;
 }
 
 .tipo-previsoes{
@@ -170,11 +178,10 @@ main{
     height: 100%;
     background: linear-gradient(to left, #54416D, #4477C2);
     border-radius: 50px;
-    padding-left: 3%;
-    padding-top: 1%;
+    padding-left: 3.5%;
+    padding-top: .8%;
     font-size: x-large;
     color: #2B235A;
-    gap: 0px;
 }
 #condicoes_do_ar{
     opacity: 70%;
@@ -191,7 +198,6 @@ main{
     grid-template-columns:280px 260px;
     grid-template-rows: 100px 100px;
     column-gap: 46px;
-    row-gap: 10px;
 }
 
 .aspectos div{
@@ -199,10 +205,11 @@ main{
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
-    gap: 13px;
+    gap: 10px;
 }
 .aspectos h1{
     color: whitesmoke;
+    padding-left: 24px;
 }
 
 .previsao{
@@ -272,5 +279,4 @@ footer{
     color: whitesmoke;
     text-align: center;
     font-size: large;
-    backgr
 }

@@ -42,7 +42,7 @@ header{
 }
 
 #logo_clouds{
-    width: 85px;
+    width: 75px;
 }
 
 #nome{
@@ -116,6 +116,9 @@ main{
     padding-left: 5%;
     padding-top: 1%;
     position: relative;
+}
+#favorite_star{
+    cursor: pointer;
 }
 #clima-semanal{
     opacity: 70%;
@@ -219,6 +222,7 @@ main{
     height: 40%;
     background-color: #54416D;
     border-radius: 80px;
+    padding-left: 15px;
 
 }
 
@@ -261,7 +265,6 @@ footer{
     height: 15%;
     display: flex;
     flex-direction: row;
-    place-items: center;
     padding-left: 10%;
     justify-content: space-evenly;
 }
@@ -271,7 +274,7 @@ footer{
 
 .alerta-mensagem{
     width: 25%;
-    height: 60%;
+    height: 85%;
     background-color: rgba(68,119,194, 0.6);
     border-style: solid;
     border-color: whitesmoke;
@@ -279,4 +282,5 @@ footer{
     color: whitesmoke;
     text-align: center;
     font-size: large;
+    display: none;
 }

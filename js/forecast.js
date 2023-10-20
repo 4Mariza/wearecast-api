@@ -13,16 +13,17 @@ const umidade = document.getElementById('umidade')
 const hora = document.getElementById('previsoes_hora')
 const input = document.getElementById('search-bar')
 const alerta = document.getElementById('alerta')
+const btnAlert = document.getElementById('alert-button')
+const favoriteStar = document.getElementById('favorite_star')
 
 let lng = 0
 let lat = 0
-
-let local = ""
-const date = new Date()
+const date = new Date() 
+let yellowStar = "./img/yelowStar.png"
 
 const createHora = async (item) => {
     let hourNumber = Number(item.time.split(" ")[1].split(":")[0])
-    if(date.getHours() <=  hourNumber && hourNumber < date.getHours() + 5) {
+    if(date.getHours() <=  hourNumber && hourNumber < date.getHours() + 6 ) {
         const div = document.createElement('div')
         div.classList.add('horas')
         div.innerHTML = `
@@ -32,21 +33,14 @@ const createHora = async (item) => {
         `
         hora.appendChild(div)
     }
-    
 }
 
 const getData = async () => {
     let data
-    if(local != ""){
-        data  = await getForecastToday(local)
-    } else {
+    if (input.value !== "")
+        data = await getForecastToday(input.value)
+    else 
         data = await getForecastToday(lat + "," + lng)
-    }
-
-    data.forecast.forecastday[0].hour.map(createHora)
-    
-    console.log(lat + "," + lng)
-    console.log(data)
 
     localidade.textContent = data.location.name
     chuva.textContent = `chance de chuva: ${data.forecast.forecastday[0].day.daily_chance_of_rain}%`
@@ -55,9 +49,15 @@ const getData = async () => {
     uv.textContent = data.current.uv
     vento.textContent =`${data.current.wind_kph} km/h`
     umidade.textContent = `${data.current.humidity}%`
-    alerta.textContent = data.alerts.alert[0]
-}
     
+    if (data.alerts.alert[0] == "")
+        alerta.textContent = "Não há alertas."
+    else
+        alerta.textContent = data.alerts.alert[0]
+
+    data.forecast.forecastday[0].hour.map(createHora)
+       
+}    
 
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -69,3 +69,18 @@ if (navigator.geolocation) {
   } else {
     console.log("Geolocation is not supported by this browser.")
 }
+
+const showAlerts = () => {
+    var alertaDiv = document.getElementById('alertaDiv');
+    if (window.getComputedStyle(alertaDiv).display === "none") {
+      alertaDiv.style.display = "block"
+    }
+}
+
+const favoritar = () => {
+    favoriteStar.src = yellowStar
+}
+
+input.addEventListener('focusout', getData)
+btnAlert.addEventListener('click', showAlerts)
+favoriteStar.addEventListener('click', favoritar)

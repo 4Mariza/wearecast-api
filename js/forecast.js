@@ -16,6 +16,8 @@ const alerta = document.getElementById('alerta')
 const btnAlert = document.getElementById('alert-button')
 const favoriteStar = document.getElementById('favorite_star')
 const semanal = document.getElementById('clima-semanal')
+const tipo_previsao = document.getElementById('tipo_previsao')
+const hoje = document.getElementById('clima-hora')
 
 let lng = 0
 let lat = 0
@@ -32,21 +34,24 @@ const createHora = async (item) => {
             <img src=${item.condition.icon} alt="" id="tempo_icon" width="95px">
             <span id="temp_hora">${item.temp_c}°</span>
         `
+        tipo_previsao.textContent = "Previsão por hora"
         hora.appendChild(div)
     }
 }
 
 let semana = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"]
 const createDiaSemana = async (item) => {
-    let dayNumber = Number(item.date.split("-")[1])
+    let dayNumber = Number(item.date.split("-")[2])
+    console.log(item.date);
     if(date.getDate() <= dayNumber && dayNumber < date.getDate() + 6){
         const div = document.createElement('div')
         div.classList.add('dias')
         div.innerHTML = `
-            <span>${semana[date.getDay()]}</span>
-            <img src=${item.condition.icon} alt="" width="95px">
-            <span> ${item.maxtemp_c}° / ${item.mintemp_c}°</span>
+            <span>${semana[new Date(item.date).getDay()+1]}</span>
+            <img src=${item.day.condition.icon} alt="" width="95px">
+            <span> ${item.day.maxtemp_c}° / ${item.day.mintemp_c}°</span>
         `
+        tipo_previsao.textContent = "Semanal"
         hora.appendChild(div)
     }
 }
@@ -59,10 +64,12 @@ const getDataWeek = async () =>{
         data = await getForecastWeekly(input.value)
     else 
         data = await getForecastWeekly(lat + "," + lng)
-    
-    for(let indice = 0; indice < 7; indice++){
-        data.forecast.forecastday[indice].date.map(createDiaSemana)
-    }
+
+    data.forecast.forecastday.map(createDiaSemana);
+    semanal.style.opacity = '100%'
+    semanal.style.color = 'whitesmoke'
+    hoje.style.opacity = '70%'
+    hoje.style.color = '#2B235A'
 }
 
 
@@ -75,7 +82,7 @@ const getData = async () => {
     else 
         data = await getForecastToday(lat + "," + lng)
 
-    localidade.textContent = data.location.name
+    localidade.textContent = `${data.location.name}, ${data.location.region}`
     chuva.textContent = `chance de chuva: ${data.forecast.forecastday[0].day.daily_chance_of_rain}%`
     temperatura.textContent = data.current.temp_c + "°"
     icon.src = data.current.condition.icon
@@ -90,6 +97,11 @@ const getData = async () => {
         alerta.textContent = data.alerts.alert[0]
 
     data.forecast.forecastday[0].hour.map(createHora)   
+
+    semanal.style.opacity = '70%'
+    semanal.style.color = '#2B235A'
+    hoje.style.opacity = '100%'
+    hoje.style.color= 'whitesmoke'
 }    
 
 
@@ -116,7 +128,11 @@ const favoritar = () => {
     favoriteStar.src = yellowStar
 }
 
-input.addEventListener('focusout', getData)
+input.addEventListener('keypress', (e) => {
+    if (e.key === "Enter") {
+        getData()
+    }
+})
 btnAlert.addEventListener('click', showAlerts)
-favoriteStar.addEventListener('click', favoritar)
 semanal.addEventListener('click', getDataWeek)
+hoje.addEventListener('click', getData)

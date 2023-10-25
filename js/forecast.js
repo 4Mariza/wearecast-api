@@ -105,8 +105,10 @@ const getData = async () => {
     vento.textContent =`${data.current.wind_kph} km/h`
     umidade.textContent = `${data.current.humidity}%`
     
-    if (data.alerts.alert == "")
+    if (data.alerts.alert == ""){
         alerta.textContent = "Não há alertas."
+        alerta.style.textAlign= 'center'
+    }
     else
         alerta.textContent = data.alerts.alert[0].desc
 
@@ -134,8 +136,9 @@ if (navigator.geolocation) {
 const showAlerts = () => {
     var alertaDiv = document.getElementById('alertaDiv');
     if (window.getComputedStyle(alertaDiv).display === "none") {
-      alertaDiv.style.display = "block"
-    }
+        alertaDiv.style.display = "block"
+    } else 
+        alertaDiv.style.display = "none"
 }
 
 input.addEventListener('keypress', (e) => {

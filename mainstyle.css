@@ -91,10 +91,11 @@ input::placeholder {
 main{
     display: flex;
     flex-direction: column;
-    height: 70%;
+    height: 65%;
     width: 100%;
     align-items: center;
     gap: 16px;
+
 }
 
 .grade{

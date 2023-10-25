@@ -16,7 +16,6 @@ body{
     flex-direction: column;
     width: 100%;
     height: 100%;
-    display: flex;
     justify-content: center;
 }
 
@@ -31,7 +30,7 @@ body{
 }
 
 #logo-clouds{
-    width: 200px;
+    width: 170px;
 }
 
 #nome{
@@ -40,4 +39,146 @@ body{
     font-family: 'Kameron', serif;
     font-size: 40px;
     letter-spacing: 5px;
+}
+
+/*responsivo 1024px*/
+
+@media (max-width: 1024px) {
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    body{
+        background-color: #271D60;
+        width: 100vw;
+        height: 100vh;
+        cursor: pointer;
+    }
+    
+    .logo{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+    }
+    
+    .circulo{
+        display: flex;
+        background-color: #4477C2;
+        width: 25%;
+        height: 28%;
+        border-radius: 100%;
+        place-self: center;
+        justify-content: center;
+    }
+    
+    #logo-clouds{
+        width: 140px;
+    }
+    
+    #nome{
+        place-self: center;
+        color: whitesmoke;
+        font-family: 'Kameron', serif;
+        font-size: 40px;
+        letter-spacing: 5px;
+    }
+}
+
+
+/* responsivo - Ipadmini*/
+
+@media (max-width: 768px) {
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    body{
+        background-color: #271D60;
+        width: 100vw;
+        height: 100vh;
+        cursor: pointer;
+    }
+    
+    .logo{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+    }
+    
+    .circulo{
+        display: flex;
+        background-color: #4477C2;
+        width: 25%;
+        height: 23%;
+        border-radius: 100%;
+        place-self: center;
+        justify-content: center;
+    }
+    
+    #logo-clouds{
+        width: 130px;
+    }
+    
+    #nome{
+        place-self: center;
+        color: whitesmoke;
+        font-family: 'Kameron', serif;
+        font-size: 40px;
+        letter-spacing: 5px;
+    }
+}
+
+/*responsivo - iphone SE*/
+
+@media (max-width: 380px) {
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    body{
+        background-color: #271D60;
+        width: 100vw;
+        height: 100vh;
+        cursor: pointer;
+    }
+    
+    .logo{
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .circulo{
+        display: flex;
+        background-color: #4477C2;
+        width: 45%;
+        height: 20%;
+        border-radius: 100%;
+        place-self: center;
+        justify-content: center;
+    }
+    
+    #logo-clouds{
+        width: 110px;
+    }
+    
+    #nome{
+        place-self: center;
+        color: whitesmoke;
+        font-family: 'Kameron', serif;
+        font-size: 30px;
+        letter-spacing: 5px;
+    }
 }

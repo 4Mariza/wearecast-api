@@ -6,5 +6,4 @@ function redirecionar () {
 }
 
 
-
 body.addEventListener('click', redirecionar)

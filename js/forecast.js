@@ -22,7 +22,6 @@ const hoje = document.getElementById('clima-hora')
 let lng = 0
 let lat = 0
 const date = new Date() 
-let yellowStar = "./img/yelowStar.png"
 
 const createHora = async (item) => {
     let hourNumber = Number(item.time.split(" ")[1].split(":")[0])

@@ -58,7 +58,7 @@ header{
 }
 
 #search-bar{
-    width: 65%;
+    width: 75%;
     height: 100%;
     border-radius: 25px;
     background-image: url(./img/searchicon.png);
@@ -117,26 +117,20 @@ main{
     padding-top: 1%;
     position: relative;
 }
-#favorite_star{
-    cursor: pointer;
-}
+
 #clima-semanal{
     opacity: 70%;
     cursor: pointer;
     transition: .3s;
 }
-#clima-semanal:hover{
-    opacity: 100%;
-}
+
+/* hover nao esta funcionando... */
 
 #clima-hora{
     color: whitesmoke;
     cursor:pointer ;
     opacity: 70%;
-    transition: .5s;
-}
-#clima-hora:hover{
-    color: whitesmoke;
+    transition: .3s;
 }
 
 .tipo-previsoes{
@@ -260,6 +254,10 @@ main{
     place-items: center;
     color: whitesmoke;
     font-size: larger;
+    transition: 0.3s;
+}
+.horas:hover{
+    scale: 1.2;
 }
 
 .dias{
@@ -281,17 +279,21 @@ footer{
 }
 #alert-button{
     cursor: pointer;
+    transition: 0.5s;
+}
+#alert-button:hover{
+    scale: 1.2;
 }
 
 .alerta-mensagem{
-    width: 25%;
-    height: 85%;
+    width: 45%;
+    height: 95%;
     background-color: rgba(68,119,194, 0.6);
     border-style: solid;
     border-color: whitesmoke;
     border-radius: 10px;
     color: whitesmoke;
-    text-align: center;
-    font-size: large;
+    font-size: larger;
     display: none;
+    text-align: justify;
 }

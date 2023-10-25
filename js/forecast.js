@@ -76,6 +76,7 @@ const getDataWeek = async () =>{
 const getData = async () => {
     hora.replaceChildren("")
 
+    let indiceUV = ''
     let data
     if (input.value !== "")
         data = await getForecastToday(input.value)
@@ -85,16 +86,29 @@ const getData = async () => {
     localidade.textContent = `${data.location.name}, ${data.location.region}`
     chuva.textContent = `chance de chuva: ${data.forecast.forecastday[0].day.daily_chance_of_rain}%`
     temperatura.textContent = data.current.temp_c + "°"
-    icon.src = data.current.condition.icon
+    if(data.current.condition.icon == '//cdn.weatherapi.com/weather/64x64/night/113.png')
+        icon.setAttribute('src', './img/night-moon-svgrepo-com.png')
+    else
+        icon.src = data.current.condition.icon
     sensacao.textContent = data.current.feelslike_c + "°"
-    uv.textContent = data.current.uv
+    if(data.current.uv < 3)
+        indiceUV = 'Baixo'
+    else if (data.current.uv < 6)
+        indiceUV = 'Moderado'
+    else if (data.current.uv < 8)
+        indiceUV = 'Alto'
+    else if (data.current.uv < 11)
+        indiceUV = 'Muito alto'
+    else
+        indiceUV = 'Extremo'
+    uv.textContent = `${data.current.uv}(${indiceUV})`
     vento.textContent =`${data.current.wind_kph} km/h`
     umidade.textContent = `${data.current.humidity}%`
     
     if (data.alerts.alert == "")
         alerta.textContent = "Não há alertas."
     else
-        alerta.textContent = data.alerts.alert[0]
+        alerta.textContent = data.alerts.alert[0].desc
 
     data.forecast.forecastday[0].hour.map(createHora)   
 
@@ -122,10 +136,6 @@ const showAlerts = () => {
     if (window.getComputedStyle(alertaDiv).display === "none") {
       alertaDiv.style.display = "block"
     }
-}
-
-const favoritar = () => {
-    favoriteStar.src = yellowStar
 }
 
 input.addEventListener('keypress', (e) => {

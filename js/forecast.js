@@ -14,10 +14,10 @@ const hora = document.getElementById('previsoes_hora')
 const input = document.getElementById('search-bar')
 const alerta = document.getElementById('alerta')
 const btnAlert = document.getElementById('alert-button')
-const favoriteStar = document.getElementById('favorite_star')
 const semanal = document.getElementById('clima-semanal')
 const tipo_previsao = document.getElementById('tipo_previsao')
 const hoje = document.getElementById('clima-hora')
+const container = document.getElementById('container')
 
 let lng = 0
 let lat = 0
@@ -35,6 +35,7 @@ const createHora = async (item) => {
         `
         tipo_previsao.textContent = "Previsão por hora"
         hora.appendChild(div)
+        
     }
 }
 
@@ -100,7 +101,7 @@ const getData = async () => {
         indiceUV = 'Muito alto'
     else
         indiceUV = 'Extremo'
-    uv.textContent = `${data.current.uv}(${indiceUV})`
+    uv.textContent = `${data.current.uv} (${indiceUV})`
     vento.textContent =`${data.current.wind_kph} km/h`
     umidade.textContent = `${data.current.humidity}%`
     
@@ -132,8 +133,8 @@ if (navigator.geolocation) {
     console.log("Geolocation is not supported by this browser.")
 }
 
+const alertaDiv = document.getElementById('alertaDiv');
 const showAlerts = () => {
-    var alertaDiv = document.getElementById('alertaDiv');
     if (window.getComputedStyle(alertaDiv).display === "none") {
         alertaDiv.style.display = "block"
     } else 
@@ -145,6 +146,24 @@ input.addEventListener('keypress', (e) => {
         getData()
     }
 })
+
+/* responsivo - ipad Mini*/
+let width = screen.availWidth
+
+const showAlertsIpad = () =>{
+    if(width <= 768 && width > 368 && hora.style.opacity !== "0%"){
+        // hora.style.opacity = "0%"
+
+        container.appendChild(alertaDiv)
+        container.style.justifyItems = "center"
+        
+    } else {
+        hora.style.opacity = "100%"
+    }
+
+}
+
+btnAlert.addEventListener('click', showAlertsIpad)
 btnAlert.addEventListener('click', showAlerts)
 semanal.addEventListener('click', getDataWeek)
 hoje.addEventListener('click', getData)

@@ -18,6 +18,8 @@ const semanal = document.getElementById('clima-semanal')
 const tipo_previsao = document.getElementById('tipo_previsao')
 const hoje = document.getElementById('clima-hora')
 const container = document.getElementById('container')
+const logoNome = document.getElementById('nome')
+const clima_atual_div = document.getElementById('clima_atual')
 
 let lng = 0
 let lat = 0
@@ -79,45 +81,74 @@ const getData = async () => {
     let indiceUV = ''
     let data
     if (input.value !== "")
-        data = await getForecastToday(input.value)
-    else 
-        data = await getForecastToday(lat + "," + lng)
+    data = await getForecastToday(input.value)
+else 
+data = await getForecastToday(lat + "," + lng)
 
-    localidade.textContent = `${data.location.name}, ${data.location.region}`
-    chuva.textContent = `chance de chuva: ${data.forecast.forecastday[0].day.daily_chance_of_rain}%`
-    temperatura.textContent = data.current.temp_c + "°"
-    if(data.current.condition.icon == '//cdn.weatherapi.com/weather/64x64/night/113.png')
-        icon.setAttribute('src', './img/night-moon-svgrepo-com.png')
-    else
-        icon.src = data.current.condition.icon
-    sensacao.textContent = data.current.feelslike_c + "°"
-    if(data.current.uv < 3)
-        indiceUV = 'Baixo'
-    else if (data.current.uv < 6)
-        indiceUV = 'Moderado'
-    else if (data.current.uv < 8)
-        indiceUV = 'Alto'
-    else if (data.current.uv < 11)
-        indiceUV = 'Muito alto'
-    else
-        indiceUV = 'Extremo'
-    uv.textContent = `${data.current.uv} (${indiceUV})`
-    vento.textContent =`${data.current.wind_kph} km/h`
-    umidade.textContent = `${data.current.humidity}%`
+localidade.textContent = `${data.location.name}, ${data.location.region}`
+chuva.textContent = `chance de chuva: ${data.forecast.forecastday[0].day.daily_chance_of_rain}%`
+temperatura.textContent = data.current.temp_c + "°"
+if(data.current.condition.icon == '//cdn.weatherapi.com/weather/64x64/night/113.png')
+icon.setAttribute('src', './img/night-moon-svgrepo-com.png')
+else
+icon.src = data.current.condition.icon
+sensacao.textContent = data.current.feelslike_c + "°"
+if(data.current.uv < 3)
+indiceUV = 'Baixo'
+else if (data.current.uv < 6)
+indiceUV = 'Moderado'
+else if (data.current.uv < 8)
+indiceUV = 'Alto'
+else if (data.current.uv < 11)
+indiceUV = 'Muito alto'
+else
+indiceUV = 'Extremo'
+uv.textContent = `${data.current.uv} (${indiceUV})`
+vento.textContent =`${data.current.wind_kph} km/h`
+umidade.textContent = `${data.current.humidity}%`
+
+if (data.alerts.alert == ""){
+    alerta.textContent = "Não há alertas."
+    alerta.style.textAlign= 'center'
+}
+else
+alerta.textContent = data.alerts.alert[0].desc
+
+data.forecast.forecastday[0].hour.map(createHora)   
+
+semanal.style.opacity = '70%'
+semanal.style.color = '#2B235A'
+hoje.style.opacity = '100%'
+hoje.style.color= 'whitesmoke'
+
+/* responsivo - samsung s20 */
+if (width <= 412){
+    const barra = document.getElementById('barra')
+    const divClima = document.createElement('div')
+    clima_atual_div.replaceChildren("")
     
-    if (data.alerts.alert == ""){
-        alerta.textContent = "Não há alertas."
-        alerta.style.textAlign= 'center'
+    
+    logoNome. textContent= " "
+    hoje.textContent = " "
+    semanal.textContent = ""
+    barra.textContent = " "
+    
+    
+    divClima.classList.add('clima_atual_mobile')
+    divClima.innerHTML = `
+        <div class="localidade">
+            <h1 id="local" >${data.location.name}, ${data.location.region}</h1>
+        </div>
+        <img src=" ${data.current.condition.icon}" alt="" id="icon" width="150px">
+        <div class="info_clima_atual">
+            <span id="temperatura">${data.current.temp_c}°</span>
+        <h1 id="chuva">chance de chuva: ${data.forecast.forecastday[0].day.daily_chance_of_rain}%</h1>
+        </div>
+    `
+    
+    clima_atual_div.appendChild(divClima)
+    clima_atual_div.style.background= "none"
     }
-    else
-        alerta.textContent = data.alerts.alert[0].desc
-
-    data.forecast.forecastday[0].hour.map(createHora)   
-
-    semanal.style.opacity = '70%'
-    semanal.style.color = '#2B235A'
-    hoje.style.opacity = '100%'
-    hoje.style.color= 'whitesmoke'
 }    
 
 
@@ -141,29 +172,31 @@ const showAlerts = () => {
         alertaDiv.style.display = "none"
 }
 
-input.addEventListener('keypress', (e) => {
-    if (e.key === "Enter") {
-        getData()
-    }
-})
 
 /* responsivo - ipad Mini*/
 let width = screen.availWidth
 
 const showAlertsIpad = () =>{
-    if(width <= 768 && width > 368 && hora.style.opacity !== "0%"){
+    if(width <= 768 && width > 412 && hora.style.opacity !== "0%"){
         // hora.style.opacity = "0%"
-
+        
         container.appendChild(alertaDiv)
         container.style.justifyItems = "center"
         
     } else {
         hora.style.opacity = "100%"
     }
-
+    
 }
+
+
 
 btnAlert.addEventListener('click', showAlertsIpad)
 btnAlert.addEventListener('click', showAlerts)
 semanal.addEventListener('click', getDataWeek)
 hoje.addEventListener('click', getData)
+input.addEventListener('keypress', (e) => {
+    if (e.key === "Enter") {
+        getData()
+    }
+})

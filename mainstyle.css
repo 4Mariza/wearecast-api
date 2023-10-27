@@ -711,3 +711,227 @@ footer{
     }
     
 }
+
+/*responsivo - */
+
+@media (max-width: 412px){
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Kameron', serif;
+    }
+
+    .logo{
+        display: flex;
+        flex-direction:row ;
+        width: 42%;
+        height: 100%;
+        justify-content: center;    
+        gap: 18px;
+        padding-top: 1%;
+        padding-left: 2%;
+    }
+
+    #logo_clouds{
+        width: 55px;
+        height: 55px;
+    }
+    
+    .circulo{
+        display: flex;
+        width: 65%;
+        height: 55%;
+        place-items: center;
+    }
+    
+    #nome{
+        color: whitesmoke;
+        font-size: xx-large;
+    }
+    
+    .pesquisar{
+        display: flex;
+        flex-direction: row;
+        width: 40%;
+        height: 35%;
+        place-content: end;
+    }
+
+    .grade{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .clima_atual{
+        width: 100%;
+        height: 45%;
+    }
+
+    .tipo-previsoes{
+        padding-top: 2%;
+    }
+
+    #clima-semanal{
+        opacity: 70%;
+        cursor: pointer;
+        transition: .3s;
+        font-size: 22px;
+    }
+    
+    /* hover nao esta funcionando... */
+    
+    #clima-hora{
+        color: whitesmoke;
+        cursor:pointer ;
+        opacity: 70%;
+        transition: .3s;
+        font-size: 22px;
+    }
+    
+    .localidade{
+        padding-top: 5%;
+        font-size: 15px;
+    }
+    
+    #icon{
+        position: absolute;
+        right:10%;
+        top:25%;
+        width: 150px;
+    }
+
+    #temperatura{
+        font-size: 70px;
+    }
+
+    #chuva{
+        opacity: 75%;
+        font-size:medium;
+    }
+    
+    .condicao-ar{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 48%;
+        background: linear-gradient(to left, #54416D, #4477C2);
+        border-radius: 50px;
+        padding-top: .8%;
+        padding-left: 0%;
+        font-size: x-large;
+        color: #2B235A;
+    }
+    #condicoes_do_ar{
+        opacity: 70%;
+        padding-left: 8%;
+        padding-bottom: 2%;
+    }
+    
+    .aspectos{
+        height: 10%;
+        width: 100%;
+        place-items: start;
+        color: #2B235A;
+        font-size: 20px;
+        display: grid;
+        grid-template-columns:250px 200px;
+        grid-template-rows: 100px 100px;
+        gap: 0px;
+        column-gap: 15%;
+        padding-left: 2%;
+    }
+    
+    .aspectos div{
+        display: flex;
+        flex-direction: row;
+        place-items: start;
+        flex-wrap: wrap;
+        width: 150%;
+        height: 100%;
+        gap: 7%;
+        padding-left: 8%;
+    }
+    .aspectos h1{
+        display: flex;
+        font-size: 32px;
+        color: whitesmoke;
+        padding-left:0px;    
+        margin-bottom: 15px;
+        margin-top: 0%;
+    }
+
+    main{
+        height: 70%;
+    }
+    
+    .previsao{
+        height: 60%;
+    }
+
+    .previsoes_hora{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        place-items: center;
+        padding-left: 5%;
+    }
+    
+    .horas{
+        width: 15%;
+        display: flex;
+        flex-direction: column;
+        place-items: center;
+        color: whitesmoke;
+        font-size: larger;
+        transition: 0.3s;
+    }
+    .horas:hover{
+        scale: 1.2;
+    }
+    
+    .dias{
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        place-items: center;
+        color: whitesmoke;
+        font-size: larger;
+    }
+    
+    footer{
+        width:100% ;
+        height: 10%;
+        display: flex;
+        flex-direction: row;
+        padding-left: 10%;
+        justify-content: space-evenly;
+        place-items: center;
+        padding-top: 5%;
+    }
+    #alert-button img{
+        cursor: pointer;
+        transition: 0.5s;
+        display: flex;
+        width: 5%;
+    }
+    #alert-button:hover{
+        scale: 1.2;
+    }
+    
+    .alerta-mensagem{
+        width: 60%;
+        height: 80%;
+        background-color: rgba(68,119,194, 0.6);
+        border-style: solid;
+        border-color: whitesmoke;
+        border-radius: 10px;
+        color: whitesmoke;
+        font-size: larger;
+        display: none;
+        text-align: justify;
+    }
+}

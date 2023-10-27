@@ -722,6 +722,16 @@ footer{
         font-family: 'Kameron', serif;
     }
 
+    html{
+        overflow: hidden;
+    }
+
+    body{
+        overflow: hidden;
+        width: 412px;
+        height: 915px;
+    }
+
     .logo{
         display: flex;
         flex-direction:row ;
@@ -758,39 +768,121 @@ footer{
         place-content: end;
     }
 
-    .main{
-        justify-content: start;
+    main{
+        height: 55%;
     }
-
     .grade{
         height: 100%;
         display: flex;
         flex-direction: column;
+        overflow: hidden;
     }
     
     .clima_atual{
         width: 100%;
-        height: 65%;
+        height: 55%;
         position: relative; 
         place-items: center;
-        justify-content: start;
+        padding: 0%;
     }
 
     .clima_atual_mobile{
         display: flex;
         flex-direction: column;
-        justify-content: start;
         justify-content: space-evenly;
         place-items: center;
         color: whitesmoke;
         font-size: 14px;
-        width: 200%;
-        gap: 1%;
+        width: 100%;
+        gap: 25%;
         height: 100%;
+        padding: 0%;
     }
 
-    .tipo-previsoes{
-        padding-top: 2%;
+    
+    .localidade{
+        font-size: 15px;
+        text-align: center;
+        padding-bottom: 8%;
+    }
+    
+    #icon{
+        position: absolute;
+        left: 24%;
+        top:15%;
+        width: 170px;
+    }
+    
+    #temperatura{
+        font-size: 70px;
+        place-self: center;
+    }
+    
+    #chuva{
+        opacity: 75%;
+        font-size:medium;
+        place-self: center;
+    }
+    
+    .condicao-ar{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 28%;
+        background: linear-gradient(to left, #54416D, #4477C2);
+        border-radius: 50px;
+        font-size: medium;
+        color: #2B235A;
+    }
+    
+    .aspectos{
+        height: 100%;
+        width: 100%;
+        color: #2B235A;
+        font-size: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    
+    
+    footer{
+        width:100% ;
+        height: 35%;
+        display: flex;
+        flex-direction: row;
+        padding-left: 0%;
+        justify-content: space-evenly;
+        place-items: center;
+    }
+    
+    .previsao{
+        height: 100%;
+        width: 100%;
+        background-color: transparent;
+        overflow: hidden;
+        border-radius: 0%;
+    }
+    
+    .previsoes_hora{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        padding-left: 0%;
+    }
+    
+    .horas{
+        width: 60%;
+        height: 55%;
+        display: flex;
+        flex-direction: column;
+        color: whitesmoke;
+        font-size: larger;
+        transition: 0.3s;
+        background-color:#8fdfff75;
+        border-radius: 10%;
     }
 
     #clima-semanal{
@@ -801,145 +893,34 @@ footer{
     }
     
     #clima-hora{
-        color: whitesmoke;
         cursor:pointer ;
         opacity: 70%;
         transition: .3s;
         font-size: 22px;
-    }
-    
-    .localidade{
-        font-size: 15px;
-        text-align: center;
-        padding-bottom: 10%;
-    }
-    
-    #icon{
-        position: absolute;
-        left: 24%;
-        top:20%;
-        width: 185px;
-    }
-
-    #temperatura{
-        font-size: 70px;
-        place-self: center;
-    }
-
-    #chuva{
-        opacity: 75%;
-        font-size:medium;
-        place-self: center;
-    }
-    
-    .condicao-ar{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: 28%;
-        background: linear-gradient(to left, #54416D, #4477C2);
-        border-radius: 50px;
-        padding-top: .8%;
-        padding-left: 0%;
-        font-size: x-large;
-        color: #2B235A;
-    }
-    #condicoes_do_ar{
-        opacity: 70%;
-        padding-left: 8%;
-        padding-bottom: 2%;
-    }
-    
-    .aspectos{
-        height: 10%;
-        width: 100%;
-        place-items: start;
-        color: #2B235A;
-        font-size: 20px;
-        display: grid;
-        grid-template-columns:250px 200px;
-        grid-template-rows: 100px 100px;
-        gap: 0px;
-        column-gap: 15%;
-        padding-left: 2%;
-    }
-    
-    .aspectos div{
-        display: flex;
-        flex-direction: row;
-        place-items: start;
-        flex-wrap: wrap;
-        width: 150%;
-        height: 100%;
-        gap: 7%;
-        padding-left: 8%;
-    }
-    .aspectos h1{
-        display: flex;
-        font-size: 32px;
-        color: whitesmoke;
-        padding-left:0px;    
-        margin-bottom: 15px;
-        margin-top: 0%;
-    }
-
-    main{
-        height: 70%;
-    }
-    
-    .previsao{
-        height: 20%;
-    }
-
-    .previsoes_hora{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-        gap: 12px;
-        place-items: center;
-        padding-left: 5%;
-    }
-    
-    .horas{
-        width: 15%;
-        display: flex;
-        flex-direction: column;
-        place-items: center;
-        color: whitesmoke;
-        font-size: larger;
-        transition: 0.3s;
     }
     .horas:hover{
         scale: 1.2;
     }
     
     .dias{
-        width: 20%;
+        width: 60%;
+        height: 55%;
         display: flex;
         flex-direction: column;
         place-items: center;
         color: whitesmoke;
         font-size: larger;
+        background-color: #8fdfff75;
+        border-radius: 10%;
     }
-    
-    footer{
-        width:100% ;
-        height: 10%;
-        display: flex;
-        flex-direction: row;
-        padding-left: 10%;
-        justify-content: space-evenly;
-        place-items: center;
-        padding-top: 5%;
-        background-color: antiquewhite;
-    }
+
     #alert-button img{
         cursor: pointer;
         transition: 0.5s;
         display: flex;
         width: 5%;
     }
+
     #alert-button:hover{
         scale: 1.2;
     }

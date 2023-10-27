@@ -912,6 +912,10 @@ footer{
         font-size: larger;
         background-color: #8fdfff75;
         border-radius: 10%;
+        transition: 0.3s;
+    }
+    .dias:hover{
+        scale: 1.2;
     }
 
     #alert-button img{

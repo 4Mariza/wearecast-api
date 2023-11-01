@@ -7,6 +7,7 @@
 - Projeto desenvolvido na disiciplina de Programação Web Front-End (PWFE), no curso de Desenvolvimento de Sistemas no Senai Jandira, orientado pelo professor Fernando Leonid
 - Website de previsão de tempo com localização real e pesquisa por outras regiões
 - Previsão por hora e semanal
+- Habilite a permissão para saber sua localização atual
 <p align="center">
 <img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=CONCLUINDO...%20&color=GREEN&style=for-the-badge"/>
 </p>
